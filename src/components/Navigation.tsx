@@ -10,13 +10,12 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold text-gray-900 dark:text-white">
-         <img src="/images/logo2.png" alt="logo" className="h-25 w-25" />
+         <img src="/images/logo2.png" alt="logo" className="h-27 w-27" />
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-6">
-          <Link to="/" className="hover:text-gray-500 dark:hover:text-gray-400">Home</Link>
-          {/* <Link to="/about" className="hover:text-gray-500 dark:hover:text-gray-400">About</Link> */}
+        <div className="hidden md:flex space-x-6 text-2xl">
+          <Link to="/" className="hover:text-gray-500 dark:hover:text-gray-400 ">Home</Link>
           <Link to="/menu" className="hover:text-gray-500 dark:hover:text-gray-400">Menu</Link>
           <Link to="/reservations" className="hover:text-gray-500 dark:hover:text-gray-400">Reservations</Link>
           <Link to="/reviews" className="hover:text-gray-500 dark:hover:text-gray-400">Reviews</Link>

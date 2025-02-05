@@ -5,26 +5,23 @@ export default function Footer() {
     <footer className="bg-gray-400 text-black py-10 px-6 md:px-16 text-center">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-left">
         
-        {/* Logo & About */}
+      
         <div className="flex flex-col items-start md:items-start">
           <img src="/images/logo2.png" alt="logo" className="w-28 h-auto mb-3" />
-          {/* <p className="text-sm leading-relaxed">
-            Bringing you the best of Nigerian cuisine with love and tradition.
-          </p> */}
+         
         </div>
         
-        {/* Quick Links */}
+      
         <div>
           <h3 className="font-semibold text-lg">Quick Links</h3>
           <ul className="mt-3 space-y-2 text-sm">
-            <li><a href="/about" className="hover:text-gray-800 hover:underline">About</a></li>
             <li><a href="/menu" className="hover:text-gray-800 hover:underline">Menu</a></li>
             <li><a href="/reservations" className="hover:text-gray-800 hover:underline">Reservations</a></li>
             <li><a href="/contact" className="hover:text-gray-800 hover:underline">Contact</a></li>
           </ul>
         </div>
         
-        {/* Customer Care */}
+       
         <div>
           <h3 className="font-semibold text-lg">Customer Care</h3>
           <ul className="mt-3 space-y-2 text-sm">
@@ -34,14 +31,14 @@ export default function Footer() {
           </ul>
         </div>
         
-        {/* Contact Info */}
+     
         <div>
           <h3 className="font-semibold text-lg">Contact</h3>
-          <p className="mt-3 text-sm">123 Lagos Street, Nigeria</p>
+          <p className="mt-3 text-sm">123 Foodie Street, Lagos, Nigeria.</p>
           <p className="text-sm">Email: ndidiabyuyai@gmail.com</p>
           <p className="text-sm">Phone: +234 123 456 7890</p>
           
-          {/* Social Icons */}
+          
           <div className="flex gap-4 text-xl mt-4">
             <a href="#" className="hover:text-blue-500"><FaFacebook /></a>
             <a href="#" className="hover:text-pink-500"><FaInstagram /></a>
@@ -50,7 +47,7 @@ export default function Footer() {
         </div>
       </div>
       
-      {/* Copyright */}
+      
       <div className="mt-10 text-sm text-gray-400">
         © 2024 Ndidia By Uyai. All rights reserved.
       </div>

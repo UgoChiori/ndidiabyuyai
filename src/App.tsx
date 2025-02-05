@@ -5,7 +5,8 @@ import LandingPage from "./routes/Home";
 import Menu from "./routes/Menu";
 import Reservations from "./routes/Reservations";
 import Reviews from "./routes/Reviews";
-import Contact from "./routes/Contact";
+import Contact from "./routes/ContactForm";
+// import Con
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <Route path="/menu" element={<Menu />} />
           <Route path="/reservations" element={<Reservations />} />
           <Route path="/reviews" element={<Reviews />} />
-          <Route path="/contact" element={<Contact/>} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
         
        

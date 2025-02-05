@@ -60,7 +60,7 @@ export default function Menu() {
             🥘 MENU
           </h2>
           <p className="text-lg text-gray-600">
-            Savor the rich flavors of authentic Efik-Ibibio cuisine.
+            Savor the rich flavors of authentic Nigerian food.
           </p>
         </div>
 

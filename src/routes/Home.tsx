@@ -12,7 +12,7 @@ export default function LandingPage() {
           <p className="mt-4 text-base md:text-lg">Authentic Nigerian Cuisine, Made with Love</p>
           <a
             href="/menu"
-            className="mt-6 inline-block bg-black text-white px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold hover:bg-yellow-500"
+            className="mt-6 inline-block bg-black text-white px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold hover:bg-gray-800"
           >
             Explore Our Menu
           </a>
@@ -55,7 +55,7 @@ export default function LandingPage() {
           ))}
         </div>
         <a
-          href="/testimonials"
+          href="/reviews"
           className="mt-6 inline-block text-black underline hover:text-gray-300"
         >
           Read More Reviews
@@ -66,7 +66,7 @@ export default function LandingPage() {
       <section className="bg-[#ffff] text-black py-12 md:py-16 text-center">
         <h2 className="text-2xl md:text-3xl font-bold">Join Us on This Flavorful Journey</h2>
         <a
-          href="/about"
+          href="/menu"
           className="mt-6 inline-flex items-center bg-black text-[#ffff] px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold hover:bg-gray-800"
         >
           Learn More <FaArrowRight className="ml-2" />

@@ -3,6 +3,9 @@ import Footer from "./components/Footer"
 import Navbar from "./components/Navigation"
 import LandingPage from "./routes/Home";
 import Menu from "./routes/Menu";
+import Reservations from "./routes/Reservations";
+import Reviews from "./routes/Reviews";
+import Contact from "./routes/Contact";
 
 function App() {
   return (
@@ -12,6 +15,9 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/menu" element={<Menu />} />
+          <Route path="/reservations" element={<Reservations />} />
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/contact" element={<Contact/>} />
         </Routes>
         
        

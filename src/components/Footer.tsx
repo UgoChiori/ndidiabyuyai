@@ -17,10 +17,10 @@ export default function Footer() {
         <div>
           <h3 className="font-semibold text-lg">Quick Links</h3>
           <ul className="mt-3 space-y-2 text-sm">
-            <li><a href="/about" className="hover:text-gray-800">About</a></li>
-            <li><a href="/menu" className="hover:text-gray-800">Menu</a></li>
-            <li><a href="/reservations" className="hover:text-gray-800">Reservations</a></li>
-            <li><a href="/contact" className="hover:text-gray-800">Contact</a></li>
+            <li><a href="/about" className="hover:text-gray-800 hover:underline">About</a></li>
+            <li><a href="/menu" className="hover:text-gray-800 hover:underline">Menu</a></li>
+            <li><a href="/reservations" className="hover:text-gray-800 hover:underline">Reservations</a></li>
+            <li><a href="/contact" className="hover:text-gray-800 hover:underline">Contact</a></li>
           </ul>
         </div>
         
@@ -28,9 +28,9 @@ export default function Footer() {
         <div>
           <h3 className="font-semibold text-lg">Customer Care</h3>
           <ul className="mt-3 space-y-2 text-sm">
-            <li><a href="/faqs" className="hover:text-gray-800">FAQs</a></li>
-            <li><a href="/loyalty" className="hover:text-gray-800">Loyalty Program</a></li>
-            <li><a href="/support" className="hover:text-gray-800">Support</a></li>
+            <li><a href="/faqs" className="hover:text-gray-800 hover:underline">FAQs</a></li>
+            <li><a href="/loyalty" className="hover:text-gray-800 hover:underline">Loyalty Program</a></li>
+            <li><a href="/support" className="hover:text-gray-800 hover:underline">Support</a></li>
           </ul>
         </div>
         

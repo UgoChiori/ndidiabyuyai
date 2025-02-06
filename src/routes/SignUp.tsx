@@ -22,7 +22,7 @@ type SignUpFormInputs = {
   confirmPassword: string;
 };
 
-const SignUp = () => {
+const SignUp:React.FC = () => {
   const {
     register,
     handleSubmit,
@@ -32,7 +32,7 @@ const SignUp = () => {
   });
 
   const onSubmit: SubmitHandler<SignUpFormInputs> = (data) => {
-    console.log(data); // Handle sign-up logic here
+    console.log(data); 
   };
 
   return (

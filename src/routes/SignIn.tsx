@@ -15,7 +15,7 @@ type SignInFormInputs = {
   password: string;
 };
 
-const SignIn = () => {
+const SignIn:React.FC = () => {
   const {
     register,
     handleSubmit,

@@ -77,69 +77,7 @@ const efikIbibioMeals = [
   },
 ];
 
-// export default function Menu() {
-//   return (
-//     <section className="bg-gradient-to-b from-gray-100 to-white py-16 px-4 md:px-8 lg:px-16">
-//       <div className="max-w-6xl mx-auto">
-//         {/* Header */}
-//         <div className="text-center mb-12">
-//           <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
-//             🥘 MENU
-//           </h2>
-//           <p className="text-lg text-gray-600">
-//             Savor the rich flavors of authentic Nigerian food.
-//           </p>
-//         </div>
 
-//         {/* Menu Sections */}
-//         <div className="space-y-8">
-//           {efikIbibioMeals.map((section, index) => (
-//             <div
-//               key={index}
-//               className="bg-white rounded-xl shadow-lg overflow-hidden"
-//             >
-//               {/* Section Header */}
-//               <div className="bg-black p-4">
-//                 <h3 className="text-2xl font-bold text-white">
-//                   {section.category}
-//                 </h3>
-//               </div>
-
-//               {/* Menu Items */}
-//               <ul className="divide-y divide-gray-100">
-//                 {section.items.map((item, idx) => (
-//                   <li
-//                     key={idx}
-//                     className="p-4 hover:bg-yellow-50 transition-all duration-300"
-//                   >
-//                     <div className="flex justify-between items-center">
-//                       <span className="text-lg font-medium text-gray-800">
-//                         {item.name}
-//                       </span>
-//                       <span className="text-lg font-semibold text-black">
-//                         {item.price}
-//                       </span>
-//                     </div>
-//                   </li>
-//                 ))}
-//               </ul>
-//             </div>
-//           ))}
-//         </div>
-
-//         {/* Call-to-Action */}
-//         <div className="mt-12 text-center">
-//           <p className="text-lg text-gray-600 mb-4">
-//             Ready to indulge? Place your order now!
-//           </p>
-//           <button className="bg-black text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-400 transition-all duration-300 cursor-pointer">
-//             Order Now
-//           </button>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
 import  { useState } from "react";
 
 type CartItem = {
@@ -148,13 +86,25 @@ type CartItem = {
   quantity: number;
 };
 
+type OrderType = "pickup" | "delivery";
+
 export default function Menu() {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [orderType, setOrderType] = useState<OrderType>("pickup");
+  const [deliveryAddress, setDeliveryAddress] = useState("");
+  const [pickupTime, setPickupTime] = useState("");
+  const [orderPlaced, setOrderPlaced] = useState(false);
+  const [orderDetails, setOrderDetails] = useState<{
+    items: CartItem[];
+    total: string;
+    type: OrderType;
+    address?: string;
+    time?: string;
+  } | null>(null);
 
   const addToCart = (item: { name: string; price: string }) => {
     const existingItem = cart.find((cartItem) => cartItem.name === item.name);
     if (existingItem) {
-      // If item already exists, increase quantity
       setCart(
         cart.map((cartItem) =>
           cartItem.name === item.name
@@ -163,7 +113,6 @@ export default function Menu() {
         )
       );
     } else {
-      // If item doesn't exist, add it to the cart
       setCart([...cart, { ...item, quantity: 1 }]);
     }
   };
@@ -185,11 +134,88 @@ export default function Menu() {
   };
 
   const calculateTotal = () => {
-    return cart.reduce(
-      (total, item) => total + parseFloat(item.price.replace("₦", "").replace(",", "")) * item.quantity,
-      0
-    ).toLocaleString("en-NG", { style: "currency", currency: "NGN" });
+    return cart
+      .reduce(
+        (total, item) =>
+          total +
+          parseFloat(item.price.replace("₦", "").replace(",", "")) *
+            item.quantity,
+        0
+      )
+      .toLocaleString("en-NG", { style: "currency", currency: "NGN" });
   };
+
+  const handleCheckout = () => {
+    if (orderType === "delivery" && !deliveryAddress) {
+      alert("Please enter a delivery address.");
+      return;
+    }
+    if (orderType === "pickup" && !pickupTime) {
+      alert("Please select a pickup time.");
+      return;
+    }
+
+    const order = {
+      items: cart,
+      total: calculateTotal(),
+      type: orderType,
+      address: orderType === "delivery" ? deliveryAddress : undefined,
+      time: orderType === "pickup" ? pickupTime : undefined,
+    };
+
+    setOrderDetails(order);
+    setOrderPlaced(true);
+  };
+
+  if (orderPlaced && orderDetails) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-gray-100 to-white flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl w-full bg-white rounded-xl shadow-lg p-8 text-center">
+          <h2 className="text-3xl font-bold text-black mb-6">
+            Order Successful!
+          </h2>
+          <p className="text-lg text-gray-600 mb-6">
+            Thank you for your order. Here are the details:
+          </p>
+          <div className="text-left space-y-4">
+            <p>
+              <strong>Order Type:</strong>{" "}
+              {orderDetails.type === "delivery" ? "Delivery" : "Pickup"}
+            </p>
+            {orderDetails.type === "delivery" && (
+              <p>
+                <strong>Delivery Address:</strong> {orderDetails.address}
+              </p>
+            )}
+            {orderDetails.type === "pickup" && (
+              <p>
+                <strong>Pickup Time:</strong> {orderDetails.time}
+              </p>
+            )}
+            <p>
+              <strong>Total:</strong> {orderDetails.total}
+            </p>
+            <ul>
+              {orderDetails.items.map((item, index) => (
+                <li key={index} className="flex justify-between">
+                  <span>{item.name}</span>
+                  <span>
+                    {item.quantity} x {item.price}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <button
+            onClick={() => setOrderPlaced(false)}
+            className="mt-6 bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition-all duration-300"
+          >
+            Place Another Order
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <section className="bg-gradient-to-b from-gray-100 to-white py-16 px-4 md:px-8 lg:px-16">
@@ -289,11 +315,78 @@ export default function Menu() {
               <p className="text-xl font-bold text-black">
                 Total: {calculateTotal()}
               </p>
+
+              {/* Order Type Selection */}
+              <div className="mt-6">
+                <h3 className="text-lg font-semibold text-black mb-2">
+                  Order Type
+                </h3>
+                <div className="flex space-x-4">
+                  <button
+                    onClick={() => setOrderType("pickup")}
+                    className={`px-4 py-2 rounded-lg ${
+                      orderType === "pickup"
+                        ? "bg-black text-white"
+                        : "bg-gray-200 text-black"
+                    }`}
+                  >
+                    Pickup/Eat-In
+                  </button>
+                  <button
+                    onClick={() => setOrderType("delivery")}
+                    className={`px-4 py-2 rounded-lg ${
+                      orderType === "delivery"
+                        ? "bg-black text-white"
+                        : "bg-gray-200 text-black"
+                    }`}
+                  >
+                    Take-Out/Delivery
+                  </button>
+                </div>
+              </div>
+
+              {/* Delivery Address or Pickup Time */}
+              {orderType === "delivery" ? (
+                <div className="mt-6">
+                  <label
+                    htmlFor="deliveryAddress"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    Delivery Address
+                  </label>
+                  <input
+                    type="text"
+                    id="deliveryAddress"
+                    value={deliveryAddress}
+                    onChange={(e) => setDeliveryAddress(e.target.value)}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                    placeholder="Enter your delivery address"
+                  />
+                </div>
+              ) : (
+                <div className="mt-6">
+                  <label
+                    htmlFor="pickupTime"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    Pickup Time
+                  </label>
+                  <input
+                    type="datetime-local"
+                    id="pickupTime"
+                    value={pickupTime}
+                    onChange={(e) => setPickupTime(e.target.value)}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  />
+                </div>
+              )}
+
+              {/* Checkout Button */}
               <button
-                onClick={() => alert("Proceeding to checkout...")}
-                className="mt-4 w-full bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition-all duration-300"
+                onClick={handleCheckout}
+                className="mt-6 w-full bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition-all duration-300"
               >
-                Checkout
+                Place Order
               </button>
             </div>
           )}

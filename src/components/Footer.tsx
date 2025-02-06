@@ -1,4 +1,5 @@
-import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
@@ -42,7 +43,7 @@ export default function Footer() {
           <div className="flex gap-4 text-xl mt-4">
             <a href="#" className="hover:text-blue-500"><FaFacebook /></a>
             <a href="#" className="hover:text-pink-500"><FaInstagram /></a>
-            <a href="#" className="hover:text-blue-400"><FaTwitter /></a>
+            <a href="#" className="hover:text-black"><FaXTwitter /></a>
           </div>
         </div>
       </div>

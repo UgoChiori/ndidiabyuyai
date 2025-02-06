@@ -107,7 +107,7 @@ export default function LandingPage() {
           </p>
           <a
             href="/menu"
-            className="mt-6 inline-block bg-black text-gray-300 px-6 py-3 rounded-lg font-semibold hover:bg-gray-600 transition-all duration-300"
+            className="mt-6 inline-block bg-gray-300 text-black px-6 py-3 rounded-lg font-semibold hover:bg-black hover:text-white transition-all duration-300"
           >
             Explore Our Menu
           </a>

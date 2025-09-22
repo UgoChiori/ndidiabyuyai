@@ -149,7 +149,7 @@ const Reviews = () => {
             <div>
               <button
                 type="submit"
-                className="w-full bg-yellow-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-yellow-600 transition-all duration-300"
+                className="w-full bg-yellow-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-yellow-600 transition-all duration-300 cursor-pointer "
               >
                 Submit Review
               </button>
